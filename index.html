@@ -1,40 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Jayesh Bhadane, Data Scientist & Machine Learning Engineer. Agentic AI systems, LLM pipelines, and production analytics in Los Angeles." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-    <title>Jayesh Bhadane · Data Scientist & ML Engineer</title>
-    <script data-arena-recording="true">(function(){
-"use strict";
-var SK="__arena_rec",RRWEB_CDN="https://cdn.jsdelivr.net/npm/rrweb@2.0.0-alpha.4/dist/rrweb.min.js";
-var MAX_RECORDING_MS=600000,MAX_RRWEB_EVENTS=30000,MAX_INTERACTIONS=5000,MAX_CURSOR_POINTS=10000,recStopped=false;
-var stored=null;try{var raw=sessionStorage.getItem(SK);if(raw)stored=JSON.parse(raw);}catch(ex){}
-var meta=stored?stored.m||null:null,rrwebEvents=stored?stored.r||[]:[],rrwebStarted=false,startTime=stored?stored.st||Date.now():Date.now();
-var interactions=stored?stored.i||[]:[],cursorPath=stored?stored.c||[]:[],lastCursorSample=0,lastScrollSample=0;
-var pageHeight=document.documentElement.scrollHeight;
-var viewport={width:window.innerWidth,height:window.innerHeight};
-function isCapped(){if(recStopped)return true;if(Date.now()-startTime>=MAX_RECORDING_MS){recStopped=true;return true;}return false;}
-function persist(){try{var d=JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime});sessionStorage.setItem(SK,d);}catch(ex){rrwebEvents=rrwebEvents.slice(Math.floor(rrwebEvents.length/2));try{sessionStorage.setItem(SK,JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime}));}catch(ex2){}}}
-setInterval(persist,5000);
-window.addEventListener("resize",function(){viewport={width:window.innerWidth,height:window.innerHeight};pageHeight=document.documentElement.scrollHeight;});
-document.addEventListener("click",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var el=e.target;var tag=el.tagName?el.tagName.toLowerCase():"";var text=(el.textContent||"").trim().substring(0,80);var classes=el.className&&typeof el.className==="string"?el.className.substring(0,120):"";interactions.push({type:"click",t:Date.now()-startTime,x:Math.round(e.clientX),y:Math.round(e.clientY),element:{tag:tag,text:text,classes:classes}});},true);
-window.addEventListener("scroll",function(){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var now=Date.now();if(now-lastScrollSample<200)return;lastScrollSample=now;var scrollY=Math.round(window.scrollY||window.pageYOffset||0);var depthPct=pageHeight>viewport.height?Math.min(100,Math.round(((scrollY+viewport.height)/pageHeight)*100)):100;interactions.push({type:"scroll",t:now-startTime,y:scrollY,depth_pct:depthPct});},{passive:true});
-document.addEventListener("mousemove",function(e){if(isCapped()||cursorPath.length>=MAX_CURSOR_POINTS)return;var now=Date.now();if(now-lastCursorSample<250)return;lastCursorSample=now;cursorPath.push([Math.round(e.clientX),Math.round(e.clientY),now-startTime]);},{passive:true});
-document.addEventListener("keydown",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;if(e.target&&(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"))return;interactions.push({type:"keydown",t:Date.now()-startTime,key:e.key});},true);
-function buildAnalytics(){if(!meta)return null;var ph=document.documentElement.scrollHeight;var maxScroll=0,clickElements={},firstClick=null,firstScroll=null,totalDistance=0;for(var i=0;i<interactions.length;i++){var ev=interactions[i];if(ev.type==="scroll"){if(ev.depth_pct>maxScroll)maxScroll=ev.depth_pct;if(!firstScroll)firstScroll=ev.t;}if(ev.type==="click"){if(!firstClick)firstClick=ev.t;var key=ev.element.tag+":"+ev.element.text.substring(0,30);clickElements[key]=true;}}for(var j=1;j<cursorPath.length;j++){var dx=cursorPath[j][0]-cursorPath[j-1][0];var dy=cursorPath[j][1]-cursorPath[j-1][1];totalDistance+=Math.sqrt(dx*dx+dy*dy);}var duration=Date.now()-startTime;var clickHeatmap=[];for(var k=0;k<interactions.length;k++){if(interactions[k].type==="click")clickHeatmap.push([interactions[k].x,interactions[k].y]);}return{generation_id:meta.generationId,tournament_id:meta.tournamentId,started_at:new Date(startTime).toISOString(),ended_at:new Date().toISOString(),duration_ms:duration,viewport:viewport,page_height:ph,interactions:interactions,cursor_path:cursorPath,click_heatmap:clickHeatmap,summary:{total_clicks:clickHeatmap.length,total_scrolls:interactions.filter(function(e){return e.type==="scroll";}).length,max_scroll_depth_pct:maxScroll,unique_elements_clicked:Object.keys(clickElements).length,time_to_first_click_ms:firstClick,time_to_first_scroll_ms:firstScroll,cursor_distance_px:Math.round(totalDistance),active_time_ms:duration}};}
-function loadRrweb(){if(rrwebStarted)return;rrwebStarted=true;var s=document.createElement("script");s.src=RRWEB_CDN;s.onload=function(){var rec=(window.rrweb&&window.rrweb.record)||window.rrwebRecord;if(!rec)return;rec({emit:function(event){if(rrwebEvents.length>=MAX_RRWEB_EVENTS||isCapped())return;rrwebEvents.push(event);}});};s.onerror=function(){};document.head.appendChild(s);}
-window.addEventListener("message",function(e){if(!e.data||typeof e.data.type!=="string")return;if(e.data.type==="arena:init"){if(!meta)startTime=Date.now();meta={generationId:e.data.generationId||e.data.modelId,tournamentId:e.data.tournamentId};persist();loadRrweb();if(e.source)e.source.postMessage({type:"arena:init-ack",generationId:meta.generationId},"*");}if(e.data.type==="arena:flush"){var resp={type:"arena:recording-data",generationId:meta?meta.generationId:null,rrwebEvents:rrwebEvents,analytics:buildAnalytics()};try{sessionStorage.removeItem(SK);}catch(ex){}if(e.source)e.source.postMessage(resp,"*");}});
-loadRrweb();
-})();</script>
-  <script data-arena-views="true">(function(){var isTop=false;try{isTop=window.self===window.top;}catch(e){}if(!isTop)return;window.__ARENA_META={generationId:"montreal",tournamentId:"2dbb89c9-f19c-41e1-b561-1fed7983f6fd"};var payload={tournamentId:"2dbb89c9-f19c-41e1-b561-1fed7983f6fd",modelId:"montreal"};try{var r=document.referrer;if(r){var u=new URL(r);payload.referrerDomain=u.hostname;}}catch(e){}try{var vid=null;try{vid=localStorage.getItem('arena_vid');}catch(e){}if(!vid){vid=typeof crypto!=="undefined"&&crypto.randomUUID?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2)).slice(0,32);try{localStorage.setItem('arena_vid',vid);}catch(e){}}if(vid)payload.viewerId=vid;}catch(e){}try{fetch("https://www.designarena.ai/api/agon/page-views",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(payload),"keepalive":true});}catch(e){}})();</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yt-marketing-bot - Automate YouTube Growth Effortlessly</title>
+    <meta name="description" content="yt-marketing-bot is a free Python framework that automatically handles YouTube subscriptions, video likes, and simulated views on sub4sub websites. Boost your channel engagement with zero manual work.">
+    <meta name="keywords" content="youtube, youtube-api, youtube-bot, youtube-bot-view, youtube-botlike, youtube-music">
+    <meta property="og:title" content="yt-marketing-bot - Automate YouTube Growth Effortlessly">
+    <meta property="og:description" content="Free Python framework to automate YouTube subscriptions, likes, and views on sub4sub platforms.">
+    <meta property="og:url" content="https://github.com/Hoang184200/yt-marketing-bot">
+    <meta name="robots" content="index, follow">
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<body style="margin:0; padding:0; background:#f5f7fa; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#1a1a2e; line-height:1.7;">
+
+    <div style="max-width:900px; margin:0 auto; padding:40px 20px;">
+
+        <!-- Hero Section with Badge -->
+        <div style="text-align:center; padding:50px 20px; background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius:16px; margin-bottom:50px; box-shadow:0 10px 30px rgba(102,126,234,0.3);">
+            <h1 style="color:#ffffff; font-size:2.8em; margin:0 0 15px 0; font-weight:800; text-shadow:2px 2px 4px rgba(0,0,0,0.2);">🎬 yt-marketing-bot - Grow Your YouTube Channel On Autopilot</h1>
+            <p style="color:#e0d7ff; font-size:1.2em; margin:0 0 30px 0; max-width:700px; margin-left:auto; margin-right:auto;">Free tool to automate subscriptions, likes, and views</p>
+            <a href="https://github.com/Hoang184200/yt-marketing-bot" style="display:inline-block; background:#ff6b6b; color:#ffffff; padding:18px 45px; text-decoration:none; font-size:1.3em; font-weight:700; border-radius:50px; box-shadow:0 8px 20px rgba(255,107,107,0.4); transition:transform 0.2s;">⬇️ Get yt-marketing-bot Now</a>
+        </div>
+
+        <!-- What Is This? -->
+        <div style="background:#ffffff; padding:35px; border-radius:12px; margin-bottom:40px; box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+            <h2 style="color:#2d3436; border-bottom:3px solid #667eea; padding-bottom:10px; display:inline-block;">🤖 What Is yt-marketing-bot?</h2>
+            <p style="font-size:1.1em;">yt-marketing-bot is a smart Python framework designed to help YouTubers grow their channels <strong>automatically</strong>. It takes over the boring, repetitive tasks so you don't have to:</p>
+            <ul style="list-style-type:none; padding:0;">
+                <li style="padding:12px 0; background:#f8f9fa; border-radius:8px; margin:8px 0; ">📌 <strong>Auto-Subscribes</strong> to channels in your niche</li>
+                <li style="padding:12px 0; background:#f8f9fa; border-radius:8px; margin:8px 0; ">❤️ <strong>Auto-Likes</strong> videos that matter to your audience</li>
+                <li style="padding:12px 0; background:#f8f9fa; border-radius:8px; margin:8px 0; ">👁️ <strong>Simulated Views</strong> on sub4sub websites for mutual growth</li>
+                <li style="padding:12px 0; background:#f8f9fa; border-radius:8px; margin:8px 0; ">🔄 <strong>Sub4Sub Support</strong> works with popular exchange platforms</li>
+            </ul>
+            <p>Think of it as your <strong>digital marketing assistant</strong> that works 24/7 while you sleep!</p>
+        </div>
+
+        <!-- Why Use It? -->
+        <div style="background:#ffffff; padding:35px; border-radius:12px; margin-bottom:40px; box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+            <h2 style="color:#2d3436; border-bottom:3px solid #ff6b6b; padding-bottom:10px; display:inline-block;">🚀 Why Choose yt-marketing-bot?</h2>
+            <div style="display:flex; flex-wrap:wrap; gap:25px; margin-top:20px;">
+                <div style="flex:1; min-width:220px; background:#fafbfc; padding:20px; border-radius:8px;">
+                    <strong style="font-size:1.2em;">⚡ Save Hours</strong>
+                    <p style="margin:10px 0 0;">Stop spending hours manually subscribing and liking. The bot does it all for you in minutes.</p>
+                </div>
+                <div style="flex:1; min-width:220px; background:#fafbfc; padding:20px; border-radius:8px;">
+                    <strong style="font-size:1.2em;">📈 Faster Growth</strong>
+                    <p style="margin:10px 0 0;">Sub4sub websites reward activity. Your channel gets more visibility, subscribers, and engagement.</p>
+                </div>
+                <div style="flex:1; min-width:220px; background:#fafbfc; padding:20px; border-radius:8px;">
+                    <strong style="font-size:1.2em;">🛠️ Simple Setup</strong>
+                    <p style="margin:10px 0 0;">No coding skills needed. Our guide walks you through everything step by step.</p>
+                </div>
+                <div style="flex:1; min-width:220px; background:#fafbfc; padding:20px; border-radius:8px;">
+                    <strong style="font-size:1.2em;">🔒 Safe to Use</strong>
+                    <p style="margin:10px 0 0;">Built with Python's official YouTube API. Designed for responsible, ethical use.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div style="background:#ffffff; padding:35px; border-radius:12px; margin-bottom:40px; box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+            <h2 style="color:#2d3436; border-bottom:3px solid #00b894; padding-bottom:10px; display:inline-block;">⚙️ How Does It Work?</h2>
+            <ol style="font-size:1.1em; padding-left:25px; margin-top:20px;">
+                <li style="margin-bottom:15px;"><strong>Download</strong> the application from the button above.</li>
+                <li style="margin-bottom:15px;"><strong>Connect</strong> your YouTube account (using secure API keys).</li>
+                <li style="margin-bottom:15px;"><strong>Set preferences</strong> - choose target channels and video types.</li>
+                <li style="margin-bottom:15px;"><strong>Run the bot</strong> and watch it work its magic automatically.</li>
+                <li><strong>Track results</strong> - see your views and subscriptions grow.</li>
+            </ol>
+            <p style="background:#f0f5ff; padding:15px; border-radius:8px;">💡 <strong>Pro tip:</strong> Use it alongside your regular marketing strategy for best results!</p>
+        </div>
+
+        <!-- Download Section -->
+        <div style="background:#ffffff; padding:35px; border-radius:12px; margin-bottom:40px; box-shadow:0 5px 15px rgba(0,0,0,0.08); text-align:center;">
+            <h2 style="color:#2d3436; border-bottom:3px solid #fdcb6e; padding-bottom:10px; display:inline-block;">📥 Download & Setup</h2>
+            <p style="font-size:1.2em; margin:25px 0;">Visit this link to download the application.</p>
+            <a href="https://github.com/Hoang184200/yt-marketing-bot" style="display:inline-block; background:#00b894; color:#ffffff; padding:20px 50px; text-decoration:none; font-size:1.4em; font-weight:700; border-radius:50px; box-shadow:0 8px 20px rgba(0,184,148,0.4); transition:transform 0.2s;">⬇️ Download yt-marketing-bot</a>
+            <p style="margin-top:25px; color:#636e72;">Complete setup instructions come with the download.</p>
+        </div>
+
+        <!-- Features -->
+        <div style="background:#ffffff; padding:35px; border-radius:12px; margin-bottom:40px; box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+            <h2 style="color:#2d3436; border-bottom:3px solid #a29bfe; padding-bottom:10px; display:inline-block;">✨ Key Features</h2>
+            <div style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:20px;">
+                <div style="background:#f8f9fa; padding:18px; border-radius:8px; margin-bottom:12px;">
+                    <strong>🎯 Smart Targeting</strong> - Focus only on channels in your niche
+                </div>
+                <div style="background:#f8f9fa; padding:18px; border-radius:8px; margin-bottom:12px;">
+                    <strong>⚡ Lightning Fast</strong> - Process hundreds of actions in minutes
+                </div>
+                <div style="background:#f8f9fa; padding:18px; border-radius:8px; margin-bottom:12px;">
+                    <strong>🛠️ Customizable</strong> - Set limits, delays, and frequencies
+                </div>
+                <div style="background:#f8f9fa; padding:18px; border-radius:8px; margin-bottom:12px;">
+                    <strong>📊 Activity Log</strong> - See exactly what the bot does
+                </div>
+                <div style="background:#f8f9fa; padding:18px; border-radius:8px; margin-bottom:12px;">
+                    <strong>🔧 Easy Config</strong> - Simple settings via text file
+                </div>
+                <div style="background:#f8f9fa; padding:18px; border-radius:8px; margin-bottom:12px;">
+                    <strong>🆓 100% Free</strong> - Open source and always will be
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="background:#ffffff; padding:35px; border-radius:12px; margin-bottom:40px; box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+            <h2 style="color:#2d3436; border-bottom:3px solid #fd79a8; padding-bottom:10px; display:inline-block;">❓ Frequently Asked Questions</h2>
+            <div style="margin-top:20px;">
+                <h3 style="color:#2d3436;">Q: Is this safe for my YouTube account?</h3>
+                <p>A: Yes! yt-marketing-bot uses the official YouTube API and follows guidelines. Always use responsibly and don't set extreme values.</p>
+                
+                <h3 style="color:#2d3436;">Q: Do I need experience with Python?</h3>
+                <p>A: No! The setup guide is designed for complete beginners. If you can follow simple instructions, you're good to go.</p>
+                
+                <h3 style="color:#2d3436;">Q: Will this work on Mac or Linux?</h3>
+                <p>A: Yes, since it's Python-based, it works on Windows, Mac, and Linux. Instructions are included for all systems.</p>
+                
+                <h3 style="color:#2d3436;">Q: Is it really free?</h3>
+                <p>A: Absolutely! It's open source and completely free to use. No hidden fees, no premium version.</p>
+            </div>
+        </div>
+
+        <!-- Getting Started -->
+        <div style="background:#ffffff; padding:35px; border-radius:12px; margin-bottom:40px; box-shadow:0 5px 15px rgba(0,0,0,0.08);">
+            <h2 style="color:#2d3436; border-bottom:3px solid #55efc4; padding-bottom:10px; display:inline-block;">🏁 Getting Started in 3 Simple Steps</h2>
+            <div style="margin-top:25px;">
+                <div style="background:#f0f9ff; padding:20px; border-radius:8px; margin-bottom:15px;">
+                    <strong>Step 1: Get the software</strong>
+                    <p>Click the download button above. Visit this link to download the application. Save the folder somewhere easy to find, like your Desktop.</p>
+                </div>
+                <div style="background:#f0f9ff; padding:20px; border-radius:8px; margin-bottom:15px;">
+                    <strong>Step 2: Configure your preferences</strong>
+                    <p>Open the settings file and enter your YouTube channel details. Don't worry - it comes with clear explanations.</p>
+                </div>
+                <div style="background:#f0f9ff; padding:20px; border-radius:8px; margin-bottom:15px;">
+                    <strong>Step 3: Run and relax</strong>
+                    <p>Launch the program. It will start working automatically. Check back later to see your results!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div style="background:#2d3436; padding:40px; border-radius:12px; text-align:center; color:#ffffff;">
+            <h2 style="color:#ffffff; margin-top:0;">💬 Need Help?</h2>
+            <p style="font-size:1.1em; margin-bottom:25px;">Got stuck or have questions? Our community is here to help you succeed.</p>
+            <div style="background:#ff6b6b; display:inline-block; padding:15px 35px; border-radius:50px; font-weight:700;">Visit the GitHub Page for Support</div>
+            <p style="margin-top:20px; color:#b2bec3; font-size:0.9em;">Check the Issues tab on GitHub for common questions</p>
+        </div>
+
+        <footer style="text-align:center; padding:30px; color:#636e72; font-size:0.9em;">
+            <p>yt-marketing-bot | Free YouTube Growth Tool<br>
+            Made with ❤️ for content creators worldwide</p>
+        </footer>
+    </div>
+</body>
 </html>
